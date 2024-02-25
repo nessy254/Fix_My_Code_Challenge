@@ -6,7 +6,6 @@
     of the program.
 */
 
-
 if (process.argv.length <= 2) {
     process.stderr.write("Missing argument\n");
     process.stderr.write("Usage: ./1-print_square.js <size>\n");
@@ -14,11 +13,18 @@ if (process.argv.length <= 2) {
     process.exit(1);
 }
 
-size = parseInt(process.argv[2])
+const size = parseInt(process.argv[2]);
 
-for (let i = 0 ; i < size ; i ++) {
-    for (let j = 0 ; j < size ; j ++) {
-        process.stdout.write("#");
-    }
-    process.stdout.write("\n");
+if (isNaN(size) || size <= 0) {
+    process.stderr.write("Invalid size argument. Please provide a positive integer.\n");
+    process.exit(1);
 }
+
+for (let i = 0; i < size; i++) {
+    let line = "";
+    for (let j = 0; j < size; j++) {
+        line += "#";
+    }
+    console.log(line);
+}
+
